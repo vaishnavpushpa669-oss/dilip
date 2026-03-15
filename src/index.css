@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-primary: #0A0A0A;
+  --color-accent-orange: #FF6B00;
+  --color-accent-blue: #00D1FF;
+  --color-accent-green: #39FF14;
+}
+
+@layer base {
+  body {
+    @apply bg-primary text-white font-sans selection:bg-accent-orange selection:text-white;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glow-orange {
+    text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+  }
+  .glow-blue {
+    text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+  }
+  .bg-glass {
+    @apply bg-black/40 backdrop-blur-md border border-white/10;
+  }
+  .neon-border {
+    @apply border border-accent-orange/30 hover:border-accent-orange transition-colors duration-300;
+  }
+
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 5s ease infinite;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-primary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-accent-orange/50 transition-colors;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
